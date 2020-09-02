@@ -1,0 +1,19 @@
+@import "swiper/swiper-bundle.css";
+.swiper-container {
+    overflow: hidden;
+    cursor: grab
+}
+@media (max-width: 640px) {
+    .swiper-slide{
+        max-height: 280px;
+    }
+}
+.swiper-slide {
+    height: 60vh;
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

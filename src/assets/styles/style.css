@@ -1,0 +1,72 @@
+@import "slider.css";
+@import "article.css";
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+* {
+  font-family: "Rubik", sans-serif;
+}
+@media (max-width: 640px) {
+  .card {
+    min-height: 200px;
+    max-height: 220px;
+  }
+}
+
+.before-blue,
+.before-green,
+.before-red {
+  filter: contrast(1.3);
+}
+.article {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+}
+.before-blue::before {
+  content: "";
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  background-color: #60a1f1;
+  border-radius: inherit;
+  opacity: 0.4;
+}
+.before-green::before {
+  content: "";
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  background-color: #62f2a4;
+  border-radius: inherit;
+  opacity: 0.4;
+}
+.before-red::before {
+  content: "";
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  background-color: #f26262;
+  border-radius: inherit;
+  opacity: 0.4;
+}
+.h-14 {
+  width: 3.5rem;
+}
+#search {
+  position: relative;
+}
+#search::before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  top: 0.75rem;
+  left: 1rem;
+  background-image: url("/icons/search.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
