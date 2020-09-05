@@ -3,8 +3,8 @@ import home from "./routes/home";
 import article from "./routes/article";
 import compression from "compression";
 
+var port = normalizePort(process.env.PORT || '3000');
 const app = express();
-const port = 3000;
 
 app
   .use(compression())
