@@ -1,5 +1,5 @@
-import fetch from "node-fetch";
-import { markdown } from "markdown";
+const fetch = require("node-fetch");
+const { markdown } = require("markdown");
 
 const domen = "https://stnk2a.herokuapp.com";
 function dateReturn(date) {
@@ -10,30 +10,32 @@ function dateReturn(date) {
     year: new Intl.DateTimeFormat("en", { year: "numeric" }).format(d),
   };
 }
-async function getPosts() {
+async function getArticles() {
   let data = await fetch(domen + "/articles");
   if (data.ok) {
     let da = await data.json();
     let toBeautiful = (ar, cv) => {
       if (cv.show) {
+        let { id, title, content, views, description } = cv;
         ar.push({
-          id: cv.id,
-          title: cv.title,
-          color: cv.autor.color,
-          description: cv.description,
-          // content: cv.content,
-          category: cv.category.name,
+          id,
+          title,
+          content: markdown.toHTML(cv.content),
+          views,
+          description,
+          img: cv.image.url,
           date: dateReturn(cv.created_at),
-          autor: { u: cv.autor.username, a: cv.autor.avatar.url, p: cv.autor.position },
-          img: cv.image.formats.large.url,
+          color: cv.autor.color,
+          autor: {
+            u: cv.autor.username,
+            a: cv.autor.avatar.url,
+            p: cv.autor.position,
+          },
         });
       }
       return ar;
     };
-    return {
-      type: "response",
-      content: da.reduce(toBeautiful, []),
-    };
+    return da.reduce(toBeautiful, []);
   }
 }
 async function getSlides() {
@@ -47,10 +49,7 @@ async function getSlides() {
       });
       return ar;
     };
-    return {
-      type: "response",
-      content: da.slider.reduce(toBeautiful, []),
-    };
+    return da.slider.reduce(toBeautiful, []);
   }
 }
 async function getPost(id) {
@@ -69,11 +68,15 @@ async function getPost(id) {
         img: d.image.url,
         date: dateReturn(d.created_at),
         color: d.autor.color,
-        autor: { u: d.autor.username, a: d.autor.avatar.url, p: d.autor.position },
+        autor: {
+          u: d.autor.username,
+          a: d.autor.avatar.url,
+          p: d.autor.position,
+        },
       },
     };
   } else {
     return { type: "err" };
   }
 }
-export { getPosts, getSlides, getPost };
+module.exports = { getArticles, getSlides, getPost };

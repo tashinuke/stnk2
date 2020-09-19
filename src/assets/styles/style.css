@@ -1,8 +1,11 @@
+/* purgecss start ignore */
 @import "slider.css";
 @import "article.css";
 @import "tailwindcss/base";
+/* purgecss end ignore */
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
 * {
   font-family: "Rubik", sans-serif;
 }
@@ -58,6 +61,12 @@
 #search {
   position: relative;
 }
+.menu-button {
+  background-image: url("icons/menu.svg");
+}
+.logotype {
+  background-image: url("icons/logo.svg");
+}
 #search::before {
   content: "";
   display: block;
@@ -66,7 +75,7 @@
   height: 1rem;
   top: 0.75rem;
   left: 1rem;
-  background-image: url("/icons/search.svg");
+  background-image: url("icons/search.svg");
   background-size: cover;
   background-repeat: no-repeat;
 }

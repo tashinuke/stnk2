@@ -7,33 +7,23 @@ import autoprefixer from "autoprefixer";
 import rpg from "rollup-plugin-gzip";
 import { brotliCompressSync } from "zlib";
 
+const Br = {
+  customCompression: (content) => brotliCompressSync(Buffer.from(content)),
+  fileName: ".br",
+};
+
 export default [
   // export view
   {
     input: "src/assets/js/view.js",
     output: {
-      file: "dist/bundle.js",
+      file: "dist/public/bundle.js",
       format: "iife",
     },
     plugins: [
-      nodeResolve(),
-      rpg(),
-      rpg({
-        customCompression: (content) =>
-          brotliCompressSync(Buffer.from(content)),
-        fileName: ".br",
-      }),
-    ],
-  },
-  {
-    input: "src/app.js",
-    output: {
-      file: "index.js",
-      format: "cjs",
-    },
-    plugins: [
       postcss({
-        extract: "dist/style.css",
+        extract: "style.css",
+        minimize: true,
         plugins: [
           tailwindcss(),
           postcssimport(),
@@ -44,12 +34,10 @@ export default [
       rpg({
         filter: /\.css$/,
       }),
-      rpg({
-        filter: /\.css$/,
-        customCompression: (content) =>
-          brotliCompressSync(Buffer.from(content)),
-        fileName: ".br",
-      }),
+      rpg((Br.filter = /\.css$/)),
+      nodeResolve(),
+      rpg(),
+      rpg(Br),
     ],
   },
 ];

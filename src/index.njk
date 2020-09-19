@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>{{ 'meta.title' }}</title>
+    <meta name="description" content="{{ 'meta.description' }}"/>
+    <link rel="stylesheet" href="public/style.css"/>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&amp;display=swap"
+      rel="stylesheet"
+/>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"
+/>
+  </head>
+  <body class="bg-blue-900">
+    {% include "header.njk" %}
+    {% include "slider.njk" %}
+    <main class="container mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6">
+      {% for article in articles %}
+        {% include "guideline.njk" %}
+      {% endfor %}
+    </main>
+    <script src="public/bundle.js"></script>
+  </body>
+</html>

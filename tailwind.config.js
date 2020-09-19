@@ -1,5 +1,5 @@
 module.exports = {
-  corePlugins: {
+  /*corePlugins: {
     divideWidth: false,
     divideColor: false,
     divideOpacity: false,
@@ -12,6 +12,13 @@ module.exports = {
     order: false,
     placeholderColor: false,
     placeholderOpacity: false,
+  },*/
+  purge: {
+    content: ["./src/**/*.njk"],
+  },
+  plugins: [require("@tailwindcss/custom-forms")],
+  future: {
+    removeDeprecatedGapUtilities: true,
   },
   theme: {
     screens: {

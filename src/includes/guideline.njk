@@ -1,0 +1,40 @@
+<article class="px-4 md:py-4">
+  <div class="md:flex h-full">
+    <div class="md:flex-shrink-0">
+      <img
+        class="rounded-lg md:w-56 object-cover h-full card"
+        src="{{ article.img }}"
+        alt="card"
+/>
+    </div>
+    <div class="mt-4 md:mt-0 md:ml-6">
+      <div class="uppercase tracking-wide text-sm text-blue-400 font-bold">
+        {{ article.category }}
+      </div>
+      <a
+        class="block mt-1 text-lg leading-tight font-semibold text-gray-100 hover:underline"
+        href="{{ '/' + article.id }}"
+      >
+        <h2>{{ article.title }}</h2>
+      </a
+      >
+      <p class="mt-2 text-gray-300">{{ article.description }}</p>
+      <div class="flex mt-2">
+        <div class="h-10 h-14 rounded-lg before-blue">
+          <img
+            class="h-10 h-14 rounded-lg object-cover"
+            src="{{ article.autor.a }}"
+/>
+        </div>
+        <div class="px-2">
+          <span class="block text-sm text-gray-100 font-bold uppercase">{{
+            article.autor.u
+          }}</span
+          ><span class="block text-xs text-gray-300 font-light uppercase">{{
+            article.autor.p
+          }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
