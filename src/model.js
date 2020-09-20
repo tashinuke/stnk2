@@ -1,7 +1,7 @@
 const fetch = require("node-fetch");
 const { markdown } = require("markdown");
 
-const domen = "https://stnk2a.herokuapp.com";
+const domen = process.env.DOMEN;
 function dateReturn(date) {
   let d = new Date(date);
   return {

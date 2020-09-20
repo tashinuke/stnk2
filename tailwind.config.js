@@ -13,12 +13,10 @@ module.exports = {
     placeholderColor: false,
     placeholderOpacity: false,
   },*/
-  purge: {
-    content: ["./src/**/*.njk"],
-  },
-  plugins: [require("@tailwindcss/custom-forms")],
+  purge: ["./src/*.njk", "./src/includes/*.njk"],
   future: {
     removeDeprecatedGapUtilities: true,
+    purgeLayersByDefault: true,
   },
   theme: {
     screens: {

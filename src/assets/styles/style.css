@@ -1,8 +1,6 @@
-/* purgecss start ignore */
 @import "slider.css";
 @import "article.css";
 @import "tailwindcss/base";
-/* purgecss end ignore */
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
